@@ -10,7 +10,7 @@ const path = require("path");
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(__dirname));
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin123";
 const upload = multer({
@@ -40,7 +40,7 @@ const getFolderId = (index = 0) => {
 // --- CÁC API ---
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.get("/accounts", (req, res) => {
